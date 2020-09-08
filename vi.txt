@@ -1,0 +1,50 @@
+  PID TTY          TIME CMD
+   58 pts/1    00:00:00 bash
+   68 pts/1    00:00:00 bash
+   78 pts/1    00:00:00 ps
+
+i: 바로 앞에 입력모드
+a: 바로 뒤에 입력모드
+$ : End key
+^ : home key
+
+u: undo
+x: delete
+X: backspace
+dw: 한 단어 삭제
+cw: 한 단어 수정
+.(점): 직전에 입력한 것 붙여넣기 
+r: change 1 char
+A: insert mode at line end 라인 끝에서 입력모드 시작
+o: 다음줄에서 입력모드 시작
+O: 윗줄에서 입력모드 시작
+dd: 한 줄 지우기
+yy: 한 줄 복사
+p: 붙여넣기
+v: 블럭지정
+D: 현재 커서 위치 뒷부분 삭제
+
+colon 명령
+:w 저장
+:q 나가기
+:wq 저장 후 나가기
+:q! 저장하지 않고 나가기
+:! 커맨드라인으로 잠깐 나가기
+:!명령 커맨드 라인에서 명령을 실행 (ex. :!ls -al    ls -al 결과를 잠깐 보여줌)
+:set nu 라인 번호 보이기
+:set nonu 라인 번호 숨기기
+
+/ 찾기
+:%s/찾을문자,단어/바꿀문자, 단어/i(ignore,대소문자 구분 없이)g(global, 전부)
+
+H: 제일 위로 커서 옮기기
+M: 중간으로 커서
+L: 제일 밑으로 커서
+:라인 번호 라인 번호로 이동
+:$ 끝 줄로 이동
+:1 첫줄로 이동
+
+Ctrl+f : Page down
+Ctrl+b,u : Page up
+
+
