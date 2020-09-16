@@ -1,12 +1,17 @@
 # 일반 유닛
 class Unit:
-  def __init__(self, name, hp): #__init__ 파이썬에서 쓰이는 생성자. 마린이나 탱크와 같은 객체가 만들어질 때, 자동으로 호출되는 부분
+  def __init__(self, name, hp, speed): 
     self.name = name
-    self.hp = hp                # 멤버 변수
+    self.hp = hp   
+    self.speed = speed
 
-class AttackUnit(Unit): # 상속
-  def __init__(self, name, hp, damage): 
-      Unit.__init__(self, name, hp) 
+  def move(self, location):
+    print("[지상 유닛 이동]")
+    print("{0} : {1} 방향으로 이동합니다. [속도 {2}]".format(self.name, location, self.speed))
+
+class AttackUnit(Unit): 
+  def __init__(self, name, hp, speed, damage): 
+      Unit.__init__(self, name, hp, speed) 
       self.damage = damage
 
   def attack(self, location):
@@ -41,9 +46,24 @@ class Flyable:
 # 공중 공격 유닛 클래스
 class FlyableAttackUnit(AttackUnit, Flyable): # 다중 상속
   def __init__(self, name, hp, damage, flying_speed):
-    AttackUnit.__init__(self, name, hp, damage)
+    AttackUnit.__init__(self, name, hp, 0, damage) # 지상 스피드 0
     Flyable.__init__(self, flying_speed)
+  def move(self, location):
+    print("[공중 유닛 이동]")
+    self.fly(self.name, location)
 
 # 발키리. 공중 공격 유닛, 한 번에 14발 미사일 발사.
 valkyrie = FlyableAttackUnit("발키리", 200, 6, 5)
 valkyrie.fly(valkyrie.name, "3시")
+
+# 벌쳐
+vulture = AttackUnit("벌쳐", 80, 10, 20)
+
+# 배틀크루저
+battlecruiser = FlyableAttackUnit("배틀크루저", 500, 25, 3)
+
+vulture.move("11시")
+# battlecruiser.fly(battlecruiser.name, "9시")
+battlecruiser.move("9시")
+
+
